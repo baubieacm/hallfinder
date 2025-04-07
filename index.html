@@ -38,7 +38,7 @@
                             <img src="logo.png" alt="Search">
                         </span>
                         <input type="text" id="idInput" class="form-control" placeholder="Enter Roll to Find Exam Hall" autofocus
-                            aria-label="Search" aria-describedby="basic-addon1" onkeyup="((this.value.length>3)? getLocation():'');" />
+                            aria-label="Search" aria-describedby="basic-addon1" onkeyup="checkInput(this)" />
                         <span class="input-group-text" id="basic-addon1">
                             <i class="bi bi-search" onclick="getLocation()"></i>
                         </span>
@@ -48,6 +48,25 @@
 
             </div>
         </div>
+
+        <script>
+  function checkInput(input) {
+    const value = input.value;
+    const firstChar = parseInt(value.charAt(0), 10);
+
+    // Check if the first character is between 5 and 9
+    if (firstChar >= 5 && firstChar <= 9) {
+      // If the length is greater than 3, call getLocation()
+      if (value.length > 3) {
+        getLocation();
+      }
+    } else {
+      // If the first character is not between 5 and 9, check if the length is greater than 4
+      if (value.length > 4) {
+        getLocation();
+      }
+    }
+  }</script>
 
          <div class="footer container">
             <div class=" row height d-flex justify-content-center align-items-center"
